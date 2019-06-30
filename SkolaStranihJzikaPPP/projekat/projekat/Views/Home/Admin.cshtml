@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+@Styles.Render("~/Styles/Index.css")
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark col-sm-12 col-md-12 col-lg-8">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="Index">
+        <img src="C:/Users/Korisnik/Desktop/Projekat/Web1VER2/WebApplication1/projekat/projekat/adminikona.png" alt="logo" style="width:60px;">
+    </a>
+
+    @Styles.Render("~/Styles/Index.css")
+
+    <!-- Links -->
+    <ul class="navbar-nav align-content-xl-around">
+        
+
+        <li class="nav-item">
+            @Html.ActionLink("Prikaz podataka", "IndexAdmin", "ListaSkolas", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Prikaz korisnika", "PrikazKorisnika", "ListaSkolas", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Izloguj se", "Logout", "Home", new { @class = "nav-link" })
+        </li>
+    </ul>
+</nav>
+<h5 class="bg-dark col-lg-8" style="color:white;padding:5px">Korisnik ulogovan kao administrator: @Session["UserName"]</h5>
+
+
